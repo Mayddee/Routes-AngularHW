@@ -1,17 +1,10 @@
-<nav class="navbar">
-  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-    Home
-  </a>
+<nav class="nav">
+  <div class="nav-left">Harry Potter API</div>
 
-  <a routerLink="/about" routerLinkActive="active">
-    About
-  </a>
-
-  <a routerLink="/login" routerLinkActive="active">
-    Login
-  </a>
-
-  <a routerLink="/items" routerLinkActive="active">
-    Items
-  </a>
+  <div class="nav-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/about" routerLinkActive="active">About</a>
+    <a routerLink="/login" routerLinkActive="active">Login</a>
+    <a routerLink="/items" routerLinkActive="active">Items</a>
+  </div>
 </nav>

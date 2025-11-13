@@ -1,20 +1,22 @@
-<a routerLink="/items">← Back to list</a>
+<a routerLink="/items" class="back-link">← Back to list</a>
 
-<div *ngIf="loading">Loading...</div>
+<div *ngIf="loading" class="loading">Loading character...</div>
+
 <div *ngIf="error" class="error">{{ error }}</div>
 
-<div *ngIf="!loading && !error && item" class="details">
-  <h1>{{ item.fullName }}</h1>
+<div *ngIf="item" class="details-wrapper">
+  <img [src]="item.image" class="profile-img" />
 
-  <img [src]="item.image" [alt]="item.fullName" class="big" />
+  <div class="info">
+    <h1>{{ item.fullName }}</h1>
 
-  <p><strong>Nickname:</strong> {{ item.nickname || '—' }}</p>
-  <p><strong>House:</strong> {{ item.hogwartsHouse || '—' }}</p>
-  <p><strong>Interpreted by:</strong> {{ item.interpretedBy || '—' }}</p>
-  <p><strong>Birthdate:</strong> {{ item.birthdate || '—' }}</p>
-  <p>
-    <strong>Children:</strong>
-    {{ item.children && item.children.length ? item.children.join(', ') : '—' }}
-  </p>
+    <p><strong>Nickname:</strong> {{ item.nickname || '—' }}</p>
+    <p><strong>House:</strong> {{ item.hogwartsHouse || '—' }}</p>
+    <p><strong>Actor:</strong> {{ item.interpretedBy || '—' }}</p>
+    <p><strong>Birthdate:</strong> {{ item.birthdate || '—' }}</p>
+
+    <p><strong>Children:</strong>
+      {{ item.children?.length ? item.children.join(', ') : '—' }}
+    </p>
+  </div>
 </div>
-

@@ -5,14 +5,23 @@ import { AboutComponent } from './components/pages/about/about.component';
 import { ItemsListComponent } from './components/pages/items-list/items-list.component';
 import { ItemDetailsComponent } from './components/pages/item-details/item-details.component';
 
-export const routes: Routes = [
-   { path: '', component: HomeComponent },
+export const routes: Routes = [{ path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
 
-  
-  { path: 'items', component: ItemsListComponent },
-  { path: 'items/:name', component: ItemDetailsComponent },
+  {
+    path: 'items',
+    loadComponent: () =>
+      import('./components/pages/items-list/items-list.component')
+        .then(m => m.ItemsListComponent)
+  },
 
-  { path: '**', redirectTo: '' },
+  {
+    path: 'items/:index',
+    loadComponent: () =>
+      import('./components/pages/item-details/item-details.component')
+        .then(m => m.ItemDetailsComponent)
+  },
+
+  { path: '**', redirectTo: '' }
 ];

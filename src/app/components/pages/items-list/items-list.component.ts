@@ -12,48 +12,48 @@ import { ItemCardComponent } from '../../item-card/item-card.component';
   imports: [CommonModule, FormsModule, RouterLink, ItemCardComponent],
   templateUrl: './items-list.component.html',
   styleUrls: ['./items-list.component.css'],
-})
-export class ItemsListComponent implements OnInit {
+})export class ItemsListComponent implements OnInit {
+
   items: Character[] = [];
+  searchTerm = '';
   loading = false;
   error: string | null = null;
-  searchTerm = '';
 
   constructor(
-    private itemsService: ItemsService,
-    private router: Router,
-    private route: ActivatedRoute
+    private service: ItemsService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParamMap.subscribe((params) => {
+    this.route.queryParamMap.subscribe(params => {
       this.searchTerm = params.get('q') || '';
       this.loadData();
     });
   }
 
-  loadData(): void {
+  loadData() {
     this.loading = true;
     this.error = null;
 
-    this.itemsService.getItems(this.searchTerm).subscribe({
-      next: (items) => {
-        this.items = items;
+    this.service.getItems(this.searchTerm).subscribe({
+      next: res => {
+        this.items = res;
         this.loading = false;
       },
       error: () => {
-        this.error = 'Failed to load characters.';
-        this.items = [];
+        this.error = 'Failed to load characters';
         this.loading = false;
-      },
+      }
     });
   }
 
-  onSearch(): void {
+  onSearch() {
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { q: this.searchTerm || null },
-      queryParamsHandling: 'merge',
+      queryParamsHandling: 'merge'
     });
   }
 }
+

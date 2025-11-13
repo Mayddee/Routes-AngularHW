@@ -1,0 +1,26 @@
+.about-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  line-height: 1.7;
+  font-size: 18px;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4b33ff;
+}
+
+.intro {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.footnote {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #777;
+  text-align: center;
+}

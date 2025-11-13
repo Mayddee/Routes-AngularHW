@@ -1,12 +1,17 @@
-<div class="item-card">
-  <img [src]="item.image" [alt]="item.fullName" class="thumb" />
+<div class="card">
+  <img [src]="item.image" class="card-img" alt="{{ item.fullName }}" />
 
-  <div class="info">
+  <div class="card-body">
     <h3>{{ item.fullName }}</h3>
-    <p><strong>Nickname:</strong> {{ item.nickname || '—' }}</p>
-    <p><strong>House:</strong> {{ item.hogwartsHouse || '—' }}</p>
-    <p><strong>Birthdate:</strong> {{ item.birthdate || '—' }}</p>
+    <p class="house">{{ item.hogwartsHouse || 'No House' }}</p>
 
-    <a [routerLink]="['/items', item.fullName]">View details</a>
+    <a [routerLink]="['/items', item.index]" class="btn-details">
+      View Details →
+    </a>
   </div>
 </div>
+
+
+
+
+

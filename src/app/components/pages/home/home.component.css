@@ -1,0 +1,32 @@
+.home-container {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #3c3cfc;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #5A4DFF;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background: #3d32d1;
+}

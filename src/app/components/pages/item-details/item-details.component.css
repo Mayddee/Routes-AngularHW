@@ -1,15 +1,106 @@
-.details {
-  margin-top: 16px;
+.back-link {
+  display: inline-block;
+  margin: 20px 0;
+  font-size: 16px;
+  color: #6c63ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s ease;
 }
 
-.big {
-  width: 240px;
-  height: 300px;
+.back-link:hover {
+  color: #4b44e0;
+}
+
+
+.loading,
+.error {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.error {
+  color: #e63946;
+  font-weight: 600;
+}
+
+
+.details-wrapper {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  animation: fadeIn 0.4s ease;
+}
+
+
+.profile-img {
+  width: 280px;
+  height: 380px;
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 16px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
 }
 
-p {
-  margin: 4px 0;
+
+.info {
+  flex: 1;
+  padding-top: 10px;
+}
+
+.info h1 {
+  margin-bottom: 20px;
+  font-size: 34px;
+  font-weight: 800;
+  color: #333;
+}
+
+.info p {
+  margin: 10px 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.info strong {
+  font-weight: 700;
+  color: #222;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .details-wrapper {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .profile-img {
+    width: 80%;
+    height: auto;
+    margin: 0 auto 20px;
+  }
+
+  .info h1 {
+    font-size: 28px;
+  }
 }
