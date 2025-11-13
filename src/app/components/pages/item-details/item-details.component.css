@@ -1,0 +1,15 @@
+.details {
+  margin-top: 16px;
+}
+
+.big {
+  width: 240px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+p {
+  margin: 4px 0;
+}

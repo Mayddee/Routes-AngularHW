@@ -1,0 +1,20 @@
+<a routerLink="/items">← Back to list</a>
+
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div *ngIf="!loading && !error && item" class="details">
+  <h1>{{ item.fullName }}</h1>
+
+  <img [src]="item.image" [alt]="item.fullName" class="big" />
+
+  <p><strong>Nickname:</strong> {{ item.nickname || '—' }}</p>
+  <p><strong>House:</strong> {{ item.hogwartsHouse || '—' }}</p>
+  <p><strong>Interpreted by:</strong> {{ item.interpretedBy || '—' }}</p>
+  <p><strong>Birthdate:</strong> {{ item.birthdate || '—' }}</p>
+  <p>
+    <strong>Children:</strong>
+    {{ item.children && item.children.length ? item.children.join(', ') : '—' }}
+  </p>
+</div>
+
