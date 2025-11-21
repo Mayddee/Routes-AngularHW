@@ -1,4 +1,3 @@
-// src/app/components/pages/signup/signup.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
