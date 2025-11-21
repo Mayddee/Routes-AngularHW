@@ -1,19 +1,4 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-login',
-//   standalone: true,
-//   imports: [],
-//   templateUrl: './login.component.html',
-//   styleUrl: './login.component.css'
-// })
-// export class LoginComponent {
-
-// }
-
-// src/app/components/pages/login/login.component.ts
-
-// src/app/components/pages/login/login.component.ts
+// src/app/components/pages/signup/signup.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
@@ -21,19 +6,19 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-signup',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.css'
 })
-export class LoginComponent {
+export class SignupComponent {
   loading = false;
   error: string | null = null;
 
   form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]]
+    password: ['', [Validators.required, Validators.minLength(6)]]
   });
 
   constructor(
@@ -53,16 +38,15 @@ export class LoginComponent {
 
     const { email, password } = this.form.value;
 
-    this.authService.login(email!, password!).subscribe({
+    this.authService.signup(email!, password!).subscribe({
       next: () => {
         this.loading = false;
         this.router.navigate(['/profile']);
       },
       error: err => {
         this.loading = false;
-        this.error = err.message ?? 'Login failed.';
+        this.error = err.message ?? 'Signup failed.';
       }
     });
   }
 }
-

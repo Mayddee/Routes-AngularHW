@@ -1,71 +1,107 @@
-.login-container {
-  max-width: 400px;
-  margin: 60px auto;
-  padding: 30px;
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  text-align: center;
+/* Wrapper */
+.auth-container {
+  max-width: 410px;
+  margin: 90px auto;
+  padding: 36px;
+  border-radius: 12px;
+  border: 1px solid #dbdbdb;
+  background: #fcfcfc;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.05);
 }
 
+/* Title */
 h1 {
-  margin-bottom: 10px;
-  color: #4b33ff;
+  margin: 0 0 12px;
+  font-size: 28px;
+  color: #222;
+  font-weight: 700;
 }
 
+/* Subtitle */
 .subtitle {
-  font-size: 15px;
-  color: #555;
-  margin-bottom: 25px;
-  line-height: 1.5;
+  color: #666;
+  margin-bottom: 28px;
 }
 
+/* Form groups */
 .form-group {
-  text-align: left;
   margin-bottom: 20px;
 }
 
+/* Label styling */
 label {
-  display: block;
-  margin-bottom: 6px;
+  font-weight: 600;
   font-size: 14px;
   color: #333;
+  margin-bottom: 4px;
+  display: block;
 }
 
+/* Inputs */
 input {
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  padding: 10px 12px;
   font-size: 15px;
-  outline: none;
+  border: 1px solid #c5c5c5;
+  border-radius: 6px;
+  background: white;
   transition: 0.2s;
 }
 
 input:focus {
-  border-color: #4b33ff;
-  box-shadow: 0 0 5px rgba(75, 51, 255, 0.2);
+  border-color: #5f3fee;
+  outline: none;
 }
 
+/* Button */
 .btn-primary {
   width: 100%;
-  padding: 12px;
-  background: #4b33ff;
-  color: #fff;
+  padding: 10px 14px;
   font-size: 16px;
-  font-weight: 600;
+  background: #5f3fee;
   border: none;
-  border-radius: 8px;
+  color: #fff;
+  border-radius: 6px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.15s;
+  font-weight: 500;
 }
 
-.btn-primary:hover {
-  background: #3726cc;
+.btn-primary:hover:not([disabled]) {
+  background: #4d2fd5;
 }
 
-.note {
+.btn-primary[disabled] {
+  opacity: 0.65;
+}
+
+/* Error message */
+.error {
+  margin-top: 6px;
+  color: #c0392b;
+  font-size: 14px;
+}
+
+/* Switch to signup */
+.switch-link {
   margin-top: 20px;
+  text-align: center;
+}
+
+.switch-link a {
+  color: #4d2fd5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.switch-link a:hover {
+  text-decoration: underline;
+}
+
+/* Note */
+.note {
+  text-align: center;
+  margin-top: 16px;
   font-size: 13px;
   color: #777;
 }

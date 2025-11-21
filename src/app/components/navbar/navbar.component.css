@@ -25,3 +25,13 @@
   color: #5b4bff;
   border-bottom: 2px solid #5b4bff;
 }
+/* navbar.component.css – добавить */
+.logout-link {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 12px;
+  font: inherit;
+}
+

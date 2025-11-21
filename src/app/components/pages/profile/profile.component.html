@@ -1,0 +1,21 @@
+<div class="profile-container" *ngIf="user$ | async as user; else noUser">
+  <h1>Your Profile</h1>
+
+  <div class="profile-card">
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>UID:</strong> {{ user.uid }}</p>
+  </div>
+
+  <button type="button" class="btn-primary" (click)="onLogout()" [disabled]="loading">
+    {{ loading ? 'Logging out…' : 'Logout' }}
+  </button>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+</div>
+
+<ng-template #noUser>
+  <div class="profile-container">
+    <h1>No user</h1>
+    <p>You are not logged in. Redirecting to login…</p>
+  </div>
+</ng-template>

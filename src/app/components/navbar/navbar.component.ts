@@ -1,16 +1,32 @@
 import { Component } from '@angular/core';
-import { LoginComponent } from '../pages/login/login.component';
-import { HomeComponent } from '../pages/home/home.component';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { AboutComponent } from '../pages/about/about.component';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [LoginComponent, HomeComponent, AboutComponent, RouterLink, RouterLinkActive],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    NgIf,
+    AsyncPipe
+  ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  user$ = this.authService.currentUser$;
 
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  onLogout(): void {
+    this.authService.logout().subscribe({
+      next: () => this.router.navigate(['/']),
+      error: () => this.router.navigate(['/'])
+    });
+  }
 }

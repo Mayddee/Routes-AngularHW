@@ -62,7 +62,7 @@ export class ItemsService {
         return this.http
           .get<Character[]>(`${this.baseUrl}?search=${q}`)
           .pipe(map(arr => arr[0] || base));
-      })
+      }) 
     );
   }
 

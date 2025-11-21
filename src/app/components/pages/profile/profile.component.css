@@ -1,0 +1,67 @@
+/* Full wrapper */
+.profile-container {
+  max-width: 520px;
+  margin: 70px auto;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+/* Title */
+h1 {
+  margin-top: 0;
+  font-size: 32px;
+  color: #2a2a2a;
+  font-weight: 700;
+  margin-bottom: 26px;
+}
+
+/* Profile card info */
+.profile-card {
+  padding: 24px;
+  border-radius: 12px;
+  background: #fafafa;
+  border: 1px solid #dedede;
+  text-align: left;
+}
+
+.profile-card p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+strong {
+  color: #333;
+}
+
+/* Logout button */
+.btn-primary {
+  margin-top: 24px;
+  width: 100%;
+  padding: 10px 16px;
+  background: #6d53ff;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primary:hover:not([disabled]) {
+  background: #5a43e4;
+}
+
+.btn-primary[disabled] {
+  opacity: 0.7;
+}
+
+/* Error message */
+.error {
+  margin-top: 12px;
+  color: #c0392b;
+  font-size: 14px;
+}
