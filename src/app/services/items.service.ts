@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map, switchMap, of } from 'rxjs';
+import { Observable, map, switchMap, of, throwError } from 'rxjs';
+
 export interface Character {
-  index?: number;         
+  index?: number;
   fullName: string;
   nickname: string;
   hogwartsHouse: string;
@@ -21,6 +22,7 @@ export class ItemsService {
 
   constructor(private http: HttpClient) {}
 
+  // list
   getItems(query?: string): Observable<Character[]> {
     if (query && query.trim()) {
       const q = encodeURIComponent(query.trim());
@@ -29,7 +31,8 @@ export class ItemsService {
     return this.http.get<Character[]>(this.baseUrl);
   }
 
-  getItemById(id: string | number): Observable<Character | null> {
+  // details
+  getItemById(id: string | number): Observable<Character> {
     const idx = Number(id);
 
     if (!isNaN(idx)) {
@@ -46,23 +49,27 @@ export class ItemsService {
         );
     }
 
-    return of(null);
+    return throwError(() => new Error('Invalid character id'));
   }
 
   private fetchByListIndexAndThenSearch(
     idx: number
-  ): Observable<Character | null> {
+  ): Observable<Character> {
     return this.http.get<Character[]>(this.baseUrl).pipe(
       map(list => list[idx] || null),
       switchMap(base => {
-        if (!base) return of(null);
+        if (!base) {
+          return throwError(() => new Error('Character not found'));
+        }
 
         const q = encodeURIComponent(base.fullName);
 
         return this.http
           .get<Character[]>(`${this.baseUrl}?search=${q}`)
-          .pipe(map(arr => arr[0] || base));
-      }) 
+          .pipe(
+            map(arr => arr[0] || base)
+          );
+      })
     );
   }
 

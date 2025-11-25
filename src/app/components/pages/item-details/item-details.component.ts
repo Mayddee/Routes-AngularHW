@@ -1,7 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ItemsService, Character } from '../../../services/items.service';
+
+import { Store } from '@ngrx/store';
+import {
+  selectSelectedItem,
+  selectItemDetailsLoading,
+  selectItemDetailsError
+} from '../../../items/state/items.selectors';
+import { loadItem } from '../../../items/state/items.actions';
+import { Observable } from 'rxjs';
+import { Character } from '../../../services/items.service';
 
 @Component({
   selector: 'app-item-details',
@@ -11,36 +20,32 @@ import { ItemsService, Character } from '../../../services/items.service';
   styleUrls: ['./item-details.component.css']
 })
 export class ItemDetailsComponent implements OnInit {
-
-  item: Character | null = null;
-  loading = false;
-  error: string | null = null;
+  item$: Observable<Character | null>;
+  loading$: Observable<boolean>;
+  error$: Observable<string | null>;
 
   constructor(
     private route: ActivatedRoute,
-    private service: ItemsService
-  ) {}
-
-  ngOnInit(): void {
-  const id = this.route.snapshot.paramMap.get('index');
-
-  if (id === null) {
-    this.error = 'Missing character ID';
-    return;
+    private store: Store
+  ) {
+    this.item$ = this.store.select(selectSelectedItem);
+    this.loading$ = this.store.select(selectItemDetailsLoading);
+    this.error$ = this.store.select(selectItemDetailsError);
   }
 
-  this.loading = true;
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('index');
 
-  this.service.getItemById(id).subscribe({
-    next: data => {
-      this.item = data;
-      this.loading = false;
-    },
-    error: () => {
-      this.error = 'Failed to load character details';
-      this.loading = false;
+    if (id === null) {
+      // dispatch failure directly or just set error via store
+      this.store.dispatch(
+        loadItem({
+          id: 'invalid-id' // or you could create a separate action if needed
+        })
+      );
+      return;
     }
-  });
-}
 
+    this.store.dispatch(loadItem({ id }));
+  }
 }

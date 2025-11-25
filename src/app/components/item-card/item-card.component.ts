@@ -12,5 +12,5 @@ import { Character } from '../../services/items.service';
 })
 export class ItemCardComponent {
   @Input() item!: Character;
-  @Input() index!: number;  
+  @Input() index!: number;
 }

@@ -1,10 +1,12 @@
 <a routerLink="/items" class="back-link">← Back to list</a>
 
-<div *ngIf="loading" class="loading">Loading character...</div>
+<div *ngIf="loading$ | async" class="loading">Loading character...</div>
 
-<div *ngIf="error" class="error">{{ error }}</div>
+<div *ngIf="(error$ | async) as error" class="error">
+  {{ error }}
+</div>
 
-<div *ngIf="item" class="details-wrapper">
+<div *ngIf="(item$ | async) as item" class="details-wrapper">
   <img [src]="item.image" class="profile-img" />
 
   <div class="info">
@@ -15,7 +17,8 @@
     <p><strong>Actor:</strong> {{ item.interpretedBy || '—' }}</p>
     <p><strong>Birthdate:</strong> {{ item.birthdate || '—' }}</p>
 
-    <p><strong>Children:</strong>
+    <p>
+      <strong>Children:</strong>
       {{ item.children?.length ? item.children.join(', ') : '—' }}
     </p>
   </div>

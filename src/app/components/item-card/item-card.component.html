@@ -5,13 +5,8 @@
     <h3>{{ item.fullName }}</h3>
     <p class="house">{{ item.hogwartsHouse || 'No House' }}</p>
 
-    <a [routerLink]="['/items', item.index]" class="btn-details">
+    <a [routerLink]="['/items', index]" class="btn-details">
       View Details →
     </a>
   </div>
 </div>
-
-
-
-
-
