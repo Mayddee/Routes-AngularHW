@@ -6,7 +6,9 @@
 </form>
 
 <div *ngIf="loading$ | async" class="loading">Loading characters...</div>
-
+<div *ngIf="!isOnline" class="offline">
+  You are offline. If you have opened this page before, cached characters will be shown.
+</div>
 <div
   *ngIf="!(loading$ | async) && (items$ | async)?.length === 0"
   class="empty"

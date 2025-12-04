@@ -1,4 +1,3 @@
-// src/app/guards/auth.guard.ts
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
@@ -14,7 +13,6 @@ export const authGuard: CanActivateFn = () => {
       if (user) {
         return true;
       }
-      // не залогинен → редирект на /login
       return router.createUrlTree(['/login']);
     })
   );
